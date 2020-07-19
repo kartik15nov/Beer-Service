@@ -1,6 +1,5 @@
 package com.unknownbrain.msscbrewery.domain;
 
-import com.unknownbrain.msscbrewery.web.model.BeerStyleEnum;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -37,12 +36,13 @@ public class Beer {
 
     private String beerName;
 
-    private BeerStyleEnum beerStyle;
+    private String beerStyle;
 
     @Column(unique = true)
     private Long upc;
 
     private BigDecimal price;
 
-    private Integer quantityOnHand;
+    private Integer minOnHand;
+    private Integer quantityToBrew;
 }
