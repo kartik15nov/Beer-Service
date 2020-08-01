@@ -5,6 +5,7 @@ import com.unknownbrain.msscbrewery.web.model.BeerDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -26,7 +27,7 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> saveNewBeer(BeerDto beerDto) {
+    public ResponseEntity<Void> saveNewBeer(@RequestBody @Validated BeerDto beerDto) {
         BeerDto savedBeerDto = beerService.saveNewBeer(beerDto);
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -37,7 +38,7 @@ public class BeerController {
 
     @PutMapping("/{beerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBeerById(@PathVariable UUID beerId, @RequestBody BeerDto beerDto) {
+    public void updateBeerById(@PathVariable UUID beerId, @RequestBody @Validated BeerDto beerDto) {
         beerService.updateBeer(beerId, beerDto);
     }
 
