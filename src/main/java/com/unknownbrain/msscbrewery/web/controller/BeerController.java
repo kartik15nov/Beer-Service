@@ -2,6 +2,9 @@ package com.unknownbrain.msscbrewery.web.controller;
 
 import com.unknownbrain.msscbrewery.services.BeerService;
 import com.unknownbrain.msscbrewery.web.model.BeerDto;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import lombok.val;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+@Log4j2
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/beer")
 @RestController
 public class BeerController {
 
     private final BeerService beerService;
-
-    public BeerController(BeerService beerService) {
-        this.beerService = beerService;
-    }
 
     @GetMapping("/{beerId}")
     @ResponseStatus(HttpStatus.OK)
@@ -28,9 +29,11 @@ public class BeerController {
 
     @PostMapping
     public ResponseEntity<Void> saveNewBeer(@RequestBody @Validated BeerDto beerDto) {
-        BeerDto savedBeerDto = beerService.saveNewBeer(beerDto);
+        log.debug("Inside saveNewBeer..");
 
-        HttpHeaders httpHeaders = new HttpHeaders();
+        val savedBeerDto = beerService.saveNewBeer(beerDto);
+
+        val httpHeaders = new HttpHeaders();
         httpHeaders.add("Location", "/api/v1/beer/" + savedBeerDto.getId().toString());
 
         return new ResponseEntity<>(httpHeaders, HttpStatus.CREATED);
