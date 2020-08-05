@@ -8,6 +8,10 @@ group = 'com.unknownbrain'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+ext {
+    mapstructVersion = "1.4.0.Beta1"
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -23,14 +27,24 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
 
     runtimeOnly 'com.h2database:h2'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs = [
+                '-Amapstruct.defaultComponentModel=spring',
+                '-Amapstruct.suppressGeneratorTimestamp=true'
+        ]
     }
 }
 
