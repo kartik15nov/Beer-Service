@@ -59,7 +59,7 @@ test {
 asciidoctor {
     attributes 'snippets': snippetsDir
     inputs.dir 'src/main/asciidoc'
-    outputDir "build/asciidoc"
     sourceDir 'src/main/asciidoc'
+    outputDir "build/asciidoc"
     dependsOn test
 }
