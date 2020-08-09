@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.3.1.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'org.asciidoctor.convert' version '1.5.8'
     id 'java'
 }
 
@@ -10,6 +11,7 @@ sourceCompatibility = '11'
 
 ext {
     mapstructVersion = "1.4.0.Beta1"
+    snippetsDir = file('build/generated-snippets')
 }
 
 configurations {
@@ -40,6 +42,8 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
 
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+
     tasks.withType(JavaCompile) {
         options.compilerArgs = [
                 '-Amapstruct.defaultComponentModel=spring',
@@ -50,4 +54,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+asciidoctor {
+    attributes 'snippets': snippetsDir
+    inputs.dir 'src/main/asciidoc'
+    outputDir "build/asciidoc"
+    sourceDir 'src/main/asciidoc'
+    dependsOn test
 }
