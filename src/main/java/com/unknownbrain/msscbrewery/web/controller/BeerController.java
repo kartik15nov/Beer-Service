@@ -5,6 +5,7 @@ import com.unknownbrain.msscbrewery.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import lombok.val;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class BeerController {
 
     @GetMapping("/{beerId}")
     @ResponseStatus(HttpStatus.OK)
-    public BeerDto getBeerById(@PathVariable UUID beerId) {
+    public BeerDto getBeerById(@PathVariable UUID beerId) throws ChangeSetPersister.NotFoundException {
         return beerService.getBeerById(beerId); //TODO
     }
 
@@ -41,8 +42,8 @@ public class BeerController {
 
     @PutMapping("/{beerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBeerById(@PathVariable UUID beerId, @RequestBody @Validated BeerDto beerDto) {
-        beerService.updateBeer(beerId, beerDto);
+    public BeerDto updateBeerById(@PathVariable UUID beerId, @RequestBody @Validated BeerDto beerDto) throws ChangeSetPersister.NotFoundException {
+        return beerService.updateBeer(beerId, beerDto);
     }
 
     @DeleteMapping({"/{beerId}"})
