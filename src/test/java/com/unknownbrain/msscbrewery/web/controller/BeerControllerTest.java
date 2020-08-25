@@ -1,6 +1,7 @@
 package com.unknownbrain.msscbrewery.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.unknownbrain.msscbrewery.bootstrap.BeerLoader;
 import com.unknownbrain.msscbrewery.services.BeerService;
 import com.unknownbrain.msscbrewery.web.model.BeerDto;
 import com.unknownbrain.msscbrewery.web.model.BeerStyleEnum;
@@ -50,7 +51,7 @@ class BeerControllerTest {
         validBeer = BeerDto.builder().id(UUID.randomUUID())
                 .beerName("Beer1")
                 .beerStyle(BeerStyleEnum.PALE_ALE)
-                .upc(123456789012L)
+                .upc(BeerLoader.BEER_1_UPC)
                 .build();
     }
 
@@ -101,7 +102,7 @@ class BeerControllerTest {
                 .beerName("KF")
                 .beerStyle(BeerStyleEnum.ALE)
                 .price(new BigDecimal("123.34"))
-                .upc(1212323L)
+                .upc(BeerLoader.BEER_2_UPC)
                 .build();
     }
 }
