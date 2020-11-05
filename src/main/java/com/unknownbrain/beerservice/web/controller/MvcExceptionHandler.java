@@ -1,4 +1,4 @@
-package com.unknownbrain.msscbrewery.web.controller;
+package com.unknownbrain.beerservice.web.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

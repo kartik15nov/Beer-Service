@@ -1,4 +1,4 @@
-package com.unknownbrain.msscbrewery;
+package com.unknownbrain.beerservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

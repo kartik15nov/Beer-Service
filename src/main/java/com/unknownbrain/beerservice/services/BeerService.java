@@ -1,6 +1,6 @@
-package com.unknownbrain.msscbrewery.services;
+package com.unknownbrain.beerservice.services;
 
-import com.unknownbrain.msscbrewery.web.model.BeerDto;
+import com.unknownbrain.beerservice.web.model.BeerDto;
 import org.springframework.data.crossstore.ChangeSetPersister;
 
 import java.util.UUID;

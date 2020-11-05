@@ -1,4 +1,4 @@
-package com.unknownbrain.msscbrewery.web.model;
+package com.unknownbrain.beerservice.web.model;
 
 public enum BeerStyleEnum {
     LAGER, PILSNER, STOUT, GOSE, PORTER, ALE, WHEAT, IPA, PALE_ALE, SAISON

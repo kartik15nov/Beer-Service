@@ -1,9 +1,9 @@
-package com.unknownbrain.msscbrewery.services;
+package com.unknownbrain.beerservice.services;
 
-import com.unknownbrain.msscbrewery.domain.Beer;
-import com.unknownbrain.msscbrewery.repositories.BeerRepository;
-import com.unknownbrain.msscbrewery.web.mapper.BeerMapper;
-import com.unknownbrain.msscbrewery.web.model.BeerDto;
+import com.unknownbrain.beerservice.domain.Beer;
+import com.unknownbrain.beerservice.repositories.BeerRepository;
+import com.unknownbrain.beerservice.web.mapper.BeerMapper;
+import com.unknownbrain.beerservice.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.crossstore.ChangeSetPersister;

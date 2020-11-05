@@ -1,4 +1,4 @@
-package com.unknownbrain.msscbrewery.web.mapper;
+package com.unknownbrain.beerservice.web.mapper;
 
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
-package com.unknownbrain.msscbrewery.web.controller;
+package com.unknownbrain.beerservice.web.controller;
 
-import com.unknownbrain.msscbrewery.services.BeerService;
-import com.unknownbrain.msscbrewery.web.model.BeerDto;
+import com.unknownbrain.beerservice.services.BeerService;
+import com.unknownbrain.beerservice.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import lombok.val;

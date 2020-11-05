@@ -1,4 +1,4 @@
-package com.unknownbrain.msscbrewery.web.model;
+package com.unknownbrain.beerservice.web.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

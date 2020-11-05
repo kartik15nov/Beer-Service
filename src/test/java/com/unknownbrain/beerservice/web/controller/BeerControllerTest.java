@@ -1,10 +1,10 @@
-package com.unknownbrain.msscbrewery.web.controller;
+package com.unknownbrain.beerservice.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.unknownbrain.msscbrewery.bootstrap.BeerLoader;
-import com.unknownbrain.msscbrewery.services.BeerService;
-import com.unknownbrain.msscbrewery.web.model.BeerDto;
-import com.unknownbrain.msscbrewery.web.model.BeerStyleEnum;
+import com.unknownbrain.beerservice.bootstrap.BeerLoader;
+import com.unknownbrain.beerservice.services.BeerService;
+import com.unknownbrain.beerservice.web.model.BeerDto;
+import com.unknownbrain.beerservice.web.model.BeerStyleEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

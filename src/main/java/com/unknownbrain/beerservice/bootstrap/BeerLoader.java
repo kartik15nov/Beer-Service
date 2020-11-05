@@ -1,10 +1,9 @@
-package com.unknownbrain.msscbrewery.bootstrap;
+package com.unknownbrain.beerservice.bootstrap;
 
-import com.unknownbrain.msscbrewery.domain.Beer;
-import com.unknownbrain.msscbrewery.repositories.BeerRepository;
+import com.unknownbrain.beerservice.domain.Beer;
+import com.unknownbrain.beerservice.repositories.BeerRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 

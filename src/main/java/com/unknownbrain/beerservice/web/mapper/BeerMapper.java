@@ -1,7 +1,7 @@
-package com.unknownbrain.msscbrewery.web.mapper;
+package com.unknownbrain.beerservice.web.mapper;
 
-import com.unknownbrain.msscbrewery.domain.Beer;
-import com.unknownbrain.msscbrewery.web.model.BeerDto;
+import com.unknownbrain.beerservice.domain.Beer;
+import com.unknownbrain.beerservice.web.model.BeerDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

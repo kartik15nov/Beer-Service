@@ -1,6 +1,6 @@
-package com.unknownbrain.msscbrewery.repositories;
+package com.unknownbrain.beerservice.repositories;
 
-import com.unknownbrain.msscbrewery.domain.Beer;
+import com.unknownbrain.beerservice.domain.Beer;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.UUID;

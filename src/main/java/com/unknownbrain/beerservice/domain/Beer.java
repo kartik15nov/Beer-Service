@@ -1,4 +1,4 @@
-package com.unknownbrain.msscbrewery.domain;
+package com.unknownbrain.beerservice.domain;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
