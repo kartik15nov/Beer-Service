@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//@Disabled // utility for manual testing
+@Disabled // utility for manual testing
 @SpringBootTest
 class BeerInventoryServiceRestTemplateImplTest {
 
