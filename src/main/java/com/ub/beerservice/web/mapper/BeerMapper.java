@@ -11,9 +11,9 @@ import org.mapstruct.Mappings;
 @DecoratedWith(BeerMapperDecorator.class)
 public interface BeerMapper {
 
-    @Mapping(source = "minOnHand", target = "quantityOnHand")
     BeerDto beerToBeerDto(Beer beer);
 
-    @Mappings(value = {@Mapping(source = "quantityOnHand", target = "minOnHand"), @Mapping(target = "quantityToBrew", ignore = true)})
+    BeerDto beerToBeerDtoWithInventory(Beer beer);
+
     Beer beerDtoToBeer(BeerDto beerDto);
 }

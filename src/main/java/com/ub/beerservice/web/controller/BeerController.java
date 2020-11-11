@@ -33,7 +33,8 @@ public class BeerController {
     public BeerPagedList listBeers(@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
                                    @RequestParam(value = "pageSize", required = false) Integer pageSize,
                                    @RequestParam(value = "beerName", required = false) String beerName,
-                                   @RequestParam(value = "beerStyle", required = false) BeerStyleEnum beerStyle) {
+                                   @RequestParam(value = "beerStyle", required = false) BeerStyleEnum beerStyle,
+                                   @RequestParam(value = "showInventoryOnHand", required = false) boolean showInventoryOnHand) {
 
         if (pageNumber == null || pageNumber < 0) {
             pageNumber = DEFAULT_PAGE_NUMBER;
@@ -43,13 +44,13 @@ public class BeerController {
             pageSize = DEFAULT_PAGE_SIZE;
         }
 
-        return beerService.listBeers(beerName, beerStyle, PageRequest.of(pageNumber, pageSize));
+        return beerService.listBeers(beerName, beerStyle, PageRequest.of(pageNumber, pageSize), showInventoryOnHand);
     }
 
     @GetMapping("/{beerId}")
     @ResponseStatus(HttpStatus.OK)
-    public BeerDto getBeerById(@PathVariable UUID beerId) throws ChangeSetPersister.NotFoundException {
-        return beerService.getBeerById(beerId); //TODO
+    public BeerDto getBeerById(@PathVariable UUID beerId, @RequestParam(value = "showInventoryOnHand", required = false) boolean showInventoryOnHand) throws ChangeSetPersister.NotFoundException {
+        return beerService.getBeerById(beerId, showInventoryOnHand); //TODO
     }
 
     @PostMapping
