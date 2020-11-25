@@ -1,13 +1,14 @@
 package com.ub.beerservice.services;
 
-import com.ub.beerservice.repositories.BeerRepository;
 import com.ub.beerservice.domain.Beer;
+import com.ub.beerservice.repositories.BeerRepository;
 import com.ub.beerservice.web.mapper.BeerMapper;
 import com.ub.beerservice.web.model.BeerDto;
 import com.ub.beerservice.web.model.BeerPagedList;
 import com.ub.beerservice.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,25 +27,26 @@ public class BeerServiceImpl implements BeerService {
     private final BeerMapper beerMapper;
 
     @Override
-    public BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest, boolean showInventoryOnHand) {
+    @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand == false")
+    public BeerPagedList<BeerDto> listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest, boolean showInventoryOnHand) {
 
-        BeerPagedList beerPagedList;
+        BeerPagedList<BeerDto> beerPagedList;
         Page<Beer> beerPage;
 
-        if (!StringUtils.isEmpty(beerName) && !StringUtils.isEmpty(beerStyle)) {
+        if (!StringUtils.hasText(beerName) && !StringUtils.hasText(beerStyle.toString())) {
             //search both
             beerPage = beerRepository.findAllByBeerNameAndBeerStyle(beerName, beerStyle, pageRequest);
-        } else if (!StringUtils.isEmpty(beerName) && StringUtils.isEmpty(beerStyle)) {
+        } else if (!StringUtils.hasText(beerName) && StringUtils.hasText(beerStyle.toString())) {
             //search beer_service name
             beerPage = beerRepository.findAllByBeerName(beerName, pageRequest);
-        } else if (StringUtils.isEmpty(beerName) && !StringUtils.isEmpty(beerStyle)) {
+        } else if (StringUtils.hasText(beerName) && !StringUtils.hasText(beerStyle.toString())) {
             //search beer_service style
             beerPage = beerRepository.findAllByBeerStyle(beerStyle, pageRequest);
         } else {
             beerPage = beerRepository.findAll(pageRequest);
         }
 
-        beerPagedList = new BeerPagedList(
+        beerPagedList = new BeerPagedList<>(
                 beerPage
                         .getContent()
                         .stream()
@@ -57,6 +59,7 @@ public class BeerServiceImpl implements BeerService {
     }
 
     @Override
+    @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventoryOnHand == false")
     public BeerDto getBeerById(UUID beerId, boolean showInventoryOnHand) throws ChangeSetPersister.NotFoundException {
         return showInventoryOnHand
                 ? beerMapper.beerToBeerDtoWithInventory(beerRepository.findById(beerId).orElseThrow(ChangeSetPersister.NotFoundException::new))
