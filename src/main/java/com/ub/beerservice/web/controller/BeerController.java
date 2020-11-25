@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/beer")
+@RequestMapping("/api/v1/")
 @RestController
 public class BeerController {
 
@@ -28,13 +28,13 @@ public class BeerController {
 
     private final BeerService beerService;
 
-    @GetMapping(produces = {"application/json"})
+    @GetMapping(produces = {"application/json"}, path = "beer")
     @ResponseStatus(HttpStatus.OK)
-    public BeerPagedList listBeers(@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
-                                   @RequestParam(value = "pageSize", required = false) Integer pageSize,
-                                   @RequestParam(value = "beerName", required = false) String beerName,
-                                   @RequestParam(value = "beerStyle", required = false) BeerStyleEnum beerStyle,
-                                   @RequestParam(value = "showInventoryOnHand", required = false) boolean showInventoryOnHand) {
+    public BeerPagedList<BeerDto> listBeers(@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+                                            @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                                            @RequestParam(value = "beerName", required = false) String beerName,
+                                            @RequestParam(value = "beerStyle", required = false) BeerStyleEnum beerStyle,
+                                            @RequestParam(value = "showInventoryOnHand", required = false) boolean showInventoryOnHand) {
 
         if (pageNumber == null || pageNumber < 0) {
             pageNumber = DEFAULT_PAGE_NUMBER;
@@ -47,13 +47,19 @@ public class BeerController {
         return beerService.listBeers(beerName, beerStyle, PageRequest.of(pageNumber, pageSize), showInventoryOnHand);
     }
 
-    @GetMapping("/{beerId}")
+    @GetMapping("beer/{beerId}")
     @ResponseStatus(HttpStatus.OK)
     public BeerDto getBeerById(@PathVariable UUID beerId, @RequestParam(value = "showInventoryOnHand", required = false) boolean showInventoryOnHand) throws ChangeSetPersister.NotFoundException {
-        return beerService.getBeerById(beerId, showInventoryOnHand); //TODO
+        return beerService.getBeerById(beerId, showInventoryOnHand);
     }
 
-    @PostMapping
+    @GetMapping("beerUpc/{upc}")
+    @ResponseStatus(HttpStatus.OK)
+    public BeerDto getBeerById(@PathVariable String upc) throws ChangeSetPersister.NotFoundException {
+        return beerService.getBeerByUpc(upc);
+    }
+
+    @PostMapping(path = "beer")
     public ResponseEntity<Void> saveNewBeer(@RequestBody @Validated BeerDto beerDto) {
         log.debug("Inside saveNewBeer..");
 
@@ -65,13 +71,13 @@ public class BeerController {
         return new ResponseEntity<>(httpHeaders, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{beerId}")
+    @PutMapping("beer/{beerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public BeerDto updateBeerById(@PathVariable UUID beerId, @RequestBody @Validated BeerDto beerDto) throws ChangeSetPersister.NotFoundException {
         return beerService.updateBeer(beerId, beerDto);
     }
 
-    @DeleteMapping({"/{beerId}"})
+    @DeleteMapping({"beer/{beerId}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBeer(@PathVariable("beerId") UUID beerId) {
         beerService.deleteById(beerId);

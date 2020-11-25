@@ -26,20 +26,20 @@ public class BeerServiceImpl implements BeerService {
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
-    @Override
     @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand == false")
+    @Override
     public BeerPagedList<BeerDto> listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest, boolean showInventoryOnHand) {
 
         BeerPagedList<BeerDto> beerPagedList;
         Page<Beer> beerPage;
 
-        if (!StringUtils.hasText(beerName) && !StringUtils.hasText(beerStyle.toString())) {
+        if (!StringUtils.isEmpty(beerName) && !StringUtils.isEmpty(beerStyle)) {
             //search both
             beerPage = beerRepository.findAllByBeerNameAndBeerStyle(beerName, beerStyle, pageRequest);
-        } else if (!StringUtils.hasText(beerName) && StringUtils.hasText(beerStyle.toString())) {
+        } else if (!StringUtils.isEmpty(beerName) && StringUtils.isEmpty(beerStyle)) {
             //search beer_service name
             beerPage = beerRepository.findAllByBeerName(beerName, pageRequest);
-        } else if (StringUtils.hasText(beerName) && !StringUtils.hasText(beerStyle.toString())) {
+        } else if (StringUtils.isEmpty(beerName) && !StringUtils.isEmpty(beerStyle)) {
             //search beer_service style
             beerPage = beerRepository.findAllByBeerStyle(beerStyle, pageRequest);
         } else {
@@ -58,12 +58,18 @@ public class BeerServiceImpl implements BeerService {
         return beerPagedList;
     }
 
-    @Override
     @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventoryOnHand == false")
+    @Override
     public BeerDto getBeerById(UUID beerId, boolean showInventoryOnHand) throws ChangeSetPersister.NotFoundException {
         return showInventoryOnHand
                 ? beerMapper.beerToBeerDtoWithInventory(beerRepository.findById(beerId).orElseThrow(ChangeSetPersister.NotFoundException::new))
                 : beerMapper.beerToBeerDto(beerRepository.findById(beerId).orElseThrow(ChangeSetPersister.NotFoundException::new));
+    }
+
+    @Cacheable(cacheNames = "beerUpcCache")
+    @Override
+    public BeerDto getBeerByUpc(String upc) {
+        return beerMapper.beerToBeerDtoWithInventory(beerRepository.findByUpc(upc));
     }
 
     @Override

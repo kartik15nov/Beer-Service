@@ -46,7 +46,6 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
                         beerId);
 
         //sum from inventory list
-
         return Objects.requireNonNull(responseEntity.getBody())
                 .stream()
                 .mapToInt(BeerInventoryDto::getQuantityOnHand)

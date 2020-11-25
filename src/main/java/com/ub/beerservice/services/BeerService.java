@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface BeerService {
 
-    BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest, boolean showInventoryOnHand);
+    BeerPagedList<BeerDto> listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest, boolean showInventoryOnHand);
 
     BeerDto getBeerById(UUID beerId, boolean showInventoryOnHand) throws ChangeSetPersister.NotFoundException;
 
@@ -19,4 +19,6 @@ public interface BeerService {
     BeerDto updateBeer(UUID beerId, BeerDto beerDto) throws ChangeSetPersister.NotFoundException;
 
     void deleteById(UUID beerId);
+
+    BeerDto getBeerByUpc(String upc);
 }

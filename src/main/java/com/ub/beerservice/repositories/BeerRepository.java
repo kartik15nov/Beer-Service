@@ -1,6 +1,7 @@
 package com.ub.beerservice.repositories;
 
 import com.ub.beerservice.domain.Beer;
+import com.ub.beerservice.web.model.BeerDto;
 import com.ub.beerservice.web.model.BeerStyleEnum;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,4 +15,6 @@ public interface BeerRepository extends PagingAndSortingRepository<Beer, UUID> {
     Page<Beer> findAllByBeerStyle(BeerStyleEnum beerStyle, Pageable pageable);
 
     Page<Beer> findAllByBeerNameAndBeerStyle(String beerName, BeerStyleEnum beerStyle, Pageable pageable);
+
+    Beer findByUpc(String upc);
 }
