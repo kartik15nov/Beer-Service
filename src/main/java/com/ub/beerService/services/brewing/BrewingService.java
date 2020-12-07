@@ -1,4 +1,4 @@
-package com.ub.beerService.services;
+package com.ub.beerService.services.brewing;
 
 import com.ub.beerService.config.JMSConfig;
 import com.ub.beerService.domain.Beer;
@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class BrewingService {
     private final BeerRepository beerRepository;
