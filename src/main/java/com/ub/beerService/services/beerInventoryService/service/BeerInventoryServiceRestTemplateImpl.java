@@ -2,6 +2,7 @@ package com.ub.beerService.services.beerInventoryService.service;
 
 import com.ub.beerService.services.beerInventoryService.model.BeerInventoryDto;
 import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-@Log4j2
+@Slf4j
 @ConfigurationProperties(prefix = "com.ub", ignoreUnknownFields = false)
 @Component
 public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryService {

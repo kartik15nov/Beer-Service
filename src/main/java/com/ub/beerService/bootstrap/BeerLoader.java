@@ -4,14 +4,14 @@ import com.ub.beerService.domain.Beer;
 import com.ub.beerService.repositories.BeerRepository;
 import com.ub.beerService.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Slf4j
 @RequiredArgsConstructor
-@Log4j2
 @Component
 public class BeerLoader implements CommandLineRunner {
 

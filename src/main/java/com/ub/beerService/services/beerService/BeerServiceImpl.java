@@ -7,7 +7,7 @@ import com.ub.beerService.web.model.BeerDto;
 import com.ub.beerService.web.model.BeerPagedList;
 import com.ub.beerService.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
@@ -18,8 +18,8 @@ import org.springframework.util.StringUtils;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
-@Log4j2
 @Service
 public class BeerServiceImpl implements BeerService {
 
