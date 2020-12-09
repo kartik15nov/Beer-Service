@@ -1,11 +1,10 @@
 package com.ub.beerService.web.controller;
 
-import com.ub.beerService.services.beerService.BeerService;
+import com.ub.beerService.services.beer.BeerService;
 import com.ub.beerService.web.model.BeerDto;
 import com.ub.beerService.web.model.BeerPagedList;
 import com.ub.beerService.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.data.crossstore.ChangeSetPersister;

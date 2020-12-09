@@ -1,4 +1,4 @@
-package com.ub.beerService.services.beerService;
+package com.ub.beerService.services.beer;
 
 import com.ub.beerService.web.model.BeerDto;
 import com.ub.beerService.web.model.BeerPagedList;

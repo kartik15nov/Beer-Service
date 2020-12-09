@@ -1,4 +1,4 @@
-package com.ub.beerService.services.beerService;
+package com.ub.beerService.services.beer;
 
 import com.ub.beerService.domain.Beer;
 import com.ub.beerService.repositories.BeerRepository;
