@@ -2,7 +2,7 @@ package com.ub.beerService.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ub.beerService.bootstrap.BeerLoader;
-import com.ub.beerService.services.beer.BeerService;
+import com.ub.beerService.services.BeerService;
 import com.ub.beerService.web.model.BeerDto;
 import com.ub.beerService.web.model.BeerStyleEnum;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,6 +1,6 @@
 package com.ub.beerService.web.controller;
 
-import com.ub.beerService.services.beer.BeerService;
+import com.ub.beerService.services.BeerService;
 import com.ub.beerService.web.model.BeerDto;
 import com.ub.beerService.web.model.BeerPagedList;
 import com.ub.beerService.web.model.BeerStyleEnum;
