@@ -1,9 +1,9 @@
 package com.ub.beerService.web.controller;
 
 import com.ub.beerService.services.BeerService;
-import com.ub.beerService.web.model.BeerDto;
-import com.ub.beerService.web.model.BeerPagedList;
-import com.ub.beerService.web.model.BeerStyleEnum;
+import com.ub.brewery.model.BeerDto;
+import com.ub.brewery.model.BeerPagedList;
+import com.ub.brewery.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;

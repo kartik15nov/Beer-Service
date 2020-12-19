@@ -1,8 +1,8 @@
 package com.ub.beerService.services;
 
-import com.ub.beerService.web.model.BeerDto;
-import com.ub.beerService.web.model.BeerPagedList;
-import com.ub.beerService.web.model.BeerStyleEnum;
+import com.ub.brewery.model.BeerDto;
+import com.ub.brewery.model.BeerPagedList;
+import com.ub.brewery.model.BeerStyleEnum;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.PageRequest;
 

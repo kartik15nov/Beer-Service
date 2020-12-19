@@ -1,4 +1,4 @@
-package com.ub.beerService.web.model;
+package com.ub.brewery.model;
 
 public enum BeerStyleEnum {
     LAGER, PILSNER, STOUT, GOSE, PORTER, ALE, WHEAT, IPA, PALE_ALE, SAISON

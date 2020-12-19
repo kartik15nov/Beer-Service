@@ -2,7 +2,7 @@ package com.ub.beerService.bootstrap;
 
 import com.ub.beerService.domain.Beer;
 import com.ub.beerService.repositories.BeerRepository;
-import com.ub.beerService.web.model.BeerStyleEnum;
+import com.ub.brewery.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

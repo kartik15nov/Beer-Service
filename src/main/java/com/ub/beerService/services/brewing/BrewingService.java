@@ -2,7 +2,7 @@ package com.ub.beerService.services.brewing;
 
 import com.ub.beerService.config.JMSConfig;
 import com.ub.beerService.domain.Beer;
-import com.ub.common.events.BrewBeerEvent;
+import com.ub.brewery.events.BrewBeerEvent;
 import com.ub.beerService.repositories.BeerRepository;
 import com.ub.beerService.services.beerInventory.BeerInventoryService;
 import com.ub.beerService.web.mapper.BeerMapper;
