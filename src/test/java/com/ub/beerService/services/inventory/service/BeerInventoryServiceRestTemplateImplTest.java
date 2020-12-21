@@ -1,6 +1,6 @@
-package com.ub.beerService.services.beerInventory.service;
+package com.ub.beerService.services.inventory.service;
 
-import com.ub.beerService.services.beerInventory.BeerInventoryService;
+import com.ub.beerService.services.inventory.BeerInventoryService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

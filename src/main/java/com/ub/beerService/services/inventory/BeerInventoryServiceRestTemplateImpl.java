@@ -1,4 +1,4 @@
-package com.ub.beerService.services.beerInventory;
+package com.ub.beerService.services.inventory;
 
 import com.ub.brewery.model.BeerInventoryDto;
 import lombok.extern.slf4j.Slf4j;

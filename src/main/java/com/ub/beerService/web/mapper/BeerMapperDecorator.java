@@ -1,7 +1,7 @@
 package com.ub.beerService.web.mapper;
 
 import com.ub.beerService.domain.Beer;
-import com.ub.beerService.services.beerInventory.BeerInventoryService;
+import com.ub.beerService.services.inventory.BeerInventoryService;
 import com.ub.brewery.model.BeerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 

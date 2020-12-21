@@ -4,7 +4,7 @@ import com.ub.beerService.config.JMSConfig;
 import com.ub.beerService.domain.Beer;
 import com.ub.brewery.events.BrewBeerEvent;
 import com.ub.beerService.repositories.BeerRepository;
-import com.ub.beerService.services.beerInventory.BeerInventoryService;
+import com.ub.beerService.services.inventory.BeerInventoryService;
 import com.ub.beerService.web.mapper.BeerMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
