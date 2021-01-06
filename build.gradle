@@ -12,6 +12,7 @@ sourceCompatibility = '11'
 ext {
     mapstructVersion = "1.4.1.Final"
     snippetsDir = file('build/generated-snippets')
+    set('springCloudVersion', "2020.0.0")
 }
 
 configurations {
@@ -31,6 +32,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-artemis'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
     compileOnly 'org.projectlombok:lombok'
     compileOnly "org.mapstruct:mapstruct:${mapstructVersion}"
@@ -54,6 +56,12 @@ dependencies {
                 '-Amapstruct.defaultComponentModel=spring',
                 '-Amapstruct.suppressGeneratorTimestamp=true'
         ]
+    }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
 

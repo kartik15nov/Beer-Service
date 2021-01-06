@@ -1,15 +1,19 @@
+server:
+  port: 8080
+
 logging:
   level:
     com.ub: debug
 
-server:
-  port: 8080
+
 
 com:
   ub:
     beer-inventory-service-host: http://localhost:8082
 
 spring:
+  application:
+    name: beer-service
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/beer_service_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: beer_service_user
