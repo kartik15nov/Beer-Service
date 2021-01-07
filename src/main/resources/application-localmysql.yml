@@ -5,8 +5,6 @@ logging:
   level:
     com.ub: debug
 
-
-
 com:
   ub:
     beer-inventory-service-host: http://localhost:8082
