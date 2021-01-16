@@ -1,4 +1,4 @@
-package com.ub.beerService.services.inventory;
+package com.ub.beerService.services.inventory.feign;
 
 import com.ub.brewery.model.BeerInventoryDto;
 import org.springframework.cloud.openfeign.FeignClient;

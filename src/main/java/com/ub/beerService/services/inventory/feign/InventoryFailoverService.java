@@ -1,4 +1,4 @@
-package com.ub.beerService.services.inventory;
+package com.ub.beerService.services.inventory.feign;
 
 import com.ub.brewery.model.BeerInventoryDto;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 @Component
-public class InventoryServiceFeignClientFailover implements InventoryServiceFeignClient {
+public class InventoryFailoverService implements InventoryServiceFeignClient {
 
     private final InventoryFailoverFeignClient inventoryFailoverFeignClient;
 
