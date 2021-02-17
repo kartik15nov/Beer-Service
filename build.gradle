@@ -10,7 +10,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 ext {
-    mapstructVersion = "1.4.1.Final"
+    mapstructVersion = "1.4.2.Final"
     snippetsDir = file('build/generated-snippets')
     set('springCloudVersion', "Hoxton.SR9")
 }
@@ -35,6 +35,7 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
 
     compileOnly 'org.projectlombok:lombok'
     compileOnly "org.mapstruct:mapstruct:${mapstructVersion}"
